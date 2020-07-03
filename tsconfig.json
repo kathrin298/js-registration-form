@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "rootDif": "src",
     "outDir": "build",
     "lib": [
       "dom",
