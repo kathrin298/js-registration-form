@@ -2,15 +2,18 @@ import * as React from 'react';
 
 const RadioField = (props) => {
   return(
-    <div>
+    <div className="form-group">
       <label htmlFor={ props.id } >{props.label}</label>
-      <input
-        type="radio"
+      <select
+        className="form-control"
         id={props.id}
         name={props.name}
-        value={props.value}
         onChange={props.onChange}
-      ></input>
+       >
+        {props.options.map((element) => {
+          return <option value={element} key={element} >{element}</option>
+        })}
+      </select>
     </div>
   )
 }

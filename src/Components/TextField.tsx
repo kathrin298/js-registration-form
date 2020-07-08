@@ -4,19 +4,23 @@ type Props = {
   id: string,
   label: string,
   value: string,
+  optional?: true,
   onChange: any
 }
 
 const TextField = (props: Props) => {
   return(
-    <div>
+    <div className="form-group">
       <label htmlFor={props.id} >{props.label}</label>
       <input
+        className="form-control"
         type="text"
         id={props.id}
         name={props.id}
         value={props.value}
-        onChange={props.onChange} ></input>
+        onChange={props.onChange}
+        required={props.optional ? false : true}
+      ></input>
     </div>
   )
 }

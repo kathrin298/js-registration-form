@@ -1,15 +1,23 @@
 @import "./Components/Signature_Field.css";
+@import "./Components/Form.css";
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFE6E6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  width: 60%;
+  padding: 50px;
+  background-color: white;
+  box-shadow: 10px 10px 13px -4px rgba(214,214,214,1);
 }

@@ -40,10 +40,10 @@ class Form extends React.Component<{}, State> {
     dob: "",
     placeOfBirth: "",
     currentNationalities: "",
-    gender: "",
-    relationshipStatus: "",
-    religion: "",
-    documentType: "",
+    gender: "Male",
+    relationshipStatus: "Single",
+    religion: "Lutheran",
+    documentType: "ID Card",
     documentAuthory: "",
     documentIssueDate: "",
     documentExpiryDate: "",
@@ -70,51 +70,44 @@ class Form extends React.Component<{}, State> {
   render() {
     return(
       <form onSubmit={this.handleSubmit} >
-        <TextField id="movingDate" label="Date of moving" value={this.state.movingDate} onChange={this.handleTextFieldChange} />
-        <TextField id="postcode" label="Postcode in Hamburg" value={this.state.postcode} onChange={this.handleTextFieldChange} />
-        <TextField id="address" label="Street, house number, add-on (e.g. name of maintenant), floor, apartment number" value={this.state.address} onChange={this.handleTextFieldChange} />
-        <TextField id="landlord" label="Name and address of the landlord" value={this.state.landlord} onChange={this.handleTextFieldChange} />
-        <TextField id="surname" label="Surname / Doctoral degree" value={this.state.surname} onChange={this.handleTextFieldChange} />
-        <TextField id="birthname" label="Birth name (if applicable)" value={this.state.birthname} onChange={this.handleTextFieldChange} />
-        <TextField id="firstnames" label="First name(s)" value={this.state.firstnames} onChange={this.handleTextFieldChange} />
+        <div className="form-section">
+          <TextField id="movingDate" label="Date of moving" value={this.state.movingDate} onChange={this.handleTextFieldChange} />
+          <TextField id="postcode" label="Postcode in Hamburg" value={this.state.postcode} onChange={this.handleTextFieldChange} />
+          <TextField id="address" label="Street, house number, add-on (e.g. name of maintenant), floor, apartment number" value={this.state.address} onChange={this.handleTextFieldChange} />
+        </div>
 
-        <RadioField id="male" label="male" name="gender" value="male" onChange={this.handleRadioFieldChange} />
-        <RadioField id="female" label="female" name="gender" value="female" onChange={this.handleRadioFieldChange} />
+        <div className="form-section">
+          <TextField id="landlord" label="Name and address of the landlord" value={this.state.landlord} onChange={this.handleTextFieldChange} />
+        </div>
 
-        <TextField id="dob" label="Date of birth" value={this.state.dob} onChange={this.handleTextFieldChange} />
-        <TextField id="placeOfBirth" label="Place of birth (city and country)" value={this.state.placeOfBirth} onChange={this.handleTextFieldChange} />
+        <div className="form-section">
+          <TextField id="surname" label="Surname / Doctoral degree" value={this.state.surname} onChange={this.handleTextFieldChange} />
+          <TextField id="birthname" label="Birth name (if applicable)" value={this.state.birthname} optional={true} onChange={this.handleTextFieldChange} />
+          <TextField id="firstnames" label="First name(s)" value={this.state.firstnames} onChange={this.handleTextFieldChange} />
+          <RadioField id="gender" name="gender" options={['Male', 'Female']} label="Gender" onChange={this.handleRadioFieldChange} />
+          <TextField id="dob" label="Date of birth" value={this.state.dob} onChange={this.handleTextFieldChange} />
+          <TextField id="placeOfBirth" label="Place of birth (city and country)" value={this.state.placeOfBirth} onChange={this.handleTextFieldChange} />
+          <RadioField id="relationshipStatus" name="relationshipStatus" options={["Single", "Annulled civil partnership", "Civil partnership", "Married", "Divorced", "Widowed", "Widowed civiled partner"]} label="Relationship status" onChange={this.handleRadioFieldChange} />
+          <RadioField id="religion" name="religion" options={["Lutheran", "Jewish Com. Hamb.", "Roman Catholic", "Reformed churches", "Other"]} label="Religion" onChange={this.handleRadioFieldChange} />
+          <TextField id="currentNationalities" label="Current nationalities" value={this.state.currentNationalities} onChange={this.handleTextFieldChange} />
+          <RadioField id="documentType" name="documentType" options={['ID Card', 'Passport']} label="Type of document" onChange={this.handleRadioFieldChange} />
+          <TextField id="documentAuthory" label="Issuing authority" value={this.state.documentAuthory} onChange={this.handleTextFieldChange} />
+          <TextField id="documentIssueDate" label="Date of issue" value={this.state.documentIssueDate} onChange={this.handleTextFieldChange} />
+          <TextField id="documentExpiryDate" label="Expiry date" value={this.state.documentExpiryDate} onChange={this.handleTextFieldChange} />
+          <TextField id="documentSerialNumber" label="Serial number" value={this.state.documentSerialNumber} onChange={this.handleTextFieldChange} />
+        </div>
 
-        <RadioField id="single" label="single" name="relationshipStatus" value="single" onChange={this.handleRadioFieldChange} />
-        <RadioField id="annulledCivilPartnership" label="annulled civil partnership" name="relationshipStatus" value="annulled civil partnership" onChange={this.handleRadioFieldChange} />
-        <RadioField id="civilPartnership" label="civil partnership" name="relationshipStatus" value="civil partnership" onChange={this.handleRadioFieldChange} />
-        <RadioField id="married" label="married" name="relationshipStatus" value="married" onChange={this.handleRadioFieldChange} />
-        <RadioField id="divorced" label="divorced" name="relationshipStatus" value="divorced" onChange={this.handleRadioFieldChange} />
-        <RadioField id="widowed" label="widowed" name="relationshipStatus" value="widowed" onChange={this.handleRadioFieldChange} />
-        <RadioField id="widowedCiviledPartner" label="widowed civiled partner" name="relationshipStatus" value="widowed civiled partner" onChange={this.handleRadioFieldChange} />
+        <div className="form-section">
+          <TextField id="previousAccomodationPostcode" label="Postcode of previous accomodation" value={this.state.previousAccomodationPostcode} onChange={this.handleTextFieldChange} />
+          <TextField id="previousAccomodationAddress" label="Municipality/ street/ house number and add-on" value={this.state.previousAccomodationAddress} onChange={this.handleTextFieldChange} />
+        </div>
 
-        <RadioField id="lutheran" label="Lutheran" name="religion" value="lutheran" onChange={this.handleRadioFieldChange} />
-        <RadioField id="jewishComHamb" label="Jewish Com. Hamb." name="religion" value="jewish com. hamb." onChange={this.handleRadioFieldChange} />
-        <RadioField id="romanCatholic" label="Roman Catholic" name="religion" value="roman catholic" onChange={this.handleRadioFieldChange} />
-        <RadioField id="reformedChurches" label="Reformed Churches" name="religion" value="reformed churches" onChange={this.handleRadioFieldChange} />
-        <RadioField id="other" label="Other religious communities/no statement/none" name="religion" value="other" onChange={this.handleRadioFieldChange} />
-
-        <TextField id="currentNationalities" label="Current Nationalities" value={this.state.currentNationalities} onChange={this.handleTextFieldChange} />
-
-        <RadioField id="idCard" label="ID Card" name="documentType" value="id card" onChange={this.handleRadioFieldChange} />
-        <RadioField id="passport" label="Passport" name="documentType" value="passport" onChange={this.handleRadioFieldChange} />
-        <TextField id="documentAuthory" label="Issuing authority" value={this.state.documentAuthory} onChange={this.handleTextFieldChange} />
-        <TextField id="documentIssueDate" label="Date of issue" value={this.state.documentIssueDate} onChange={this.handleTextFieldChange} />
-        <TextField id="documentExpiryDate" label="Expiry date" value={this.state.documentExpiryDate} onChange={this.handleTextFieldChange} />
-        <TextField id="documentSerialNumber" label="Serial number" value={this.state.documentSerialNumber} onChange={this.handleTextFieldChange} />
-
-        <TextField id="previousAccomodationPostcode" label="Postcode of previous accomodation" value={this.state.previousAccomodationPostcode} onChange={this.handleTextFieldChange} />
-        <TextField id="previousAccomodationAddress" label="Municipality/ street/ house number and add-on" value={this.state.previousAccomodationAddress} onChange={this.handleTextFieldChange} />
-
+        <h3>Registrant's Signature</h3>
         <TextField id="signatureDate" label="Date" value={this.state.signatureDate} onChange={this.handleTextFieldChange} />
         <TextField id="signatureCity" label="City" value={this.state.signatureCity} onChange={this.handleTextFieldChange} />
+        <div className="signature-field" >Signature</div>
 
-        <div className="signature-field" ></div>
-        <input className="btn btn-danger" type="submit" ></input>
+        <input className="btn btn-lg btn-block btn-danger" type="submit" ></input>
       </form>
     )
   }
