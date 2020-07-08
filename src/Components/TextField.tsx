@@ -12,13 +12,6 @@ type Props = {
 }
 
 class TextField extends React.Component<Props, {}> {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     value: ""
-  //   }
-  // }
-
   render() {
     return(
       <div>
