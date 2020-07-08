@@ -113,6 +113,7 @@ class Form extends React.Component<{}, State> {
         <TextField id="signatureDate" label="Date" value={this.state.signatureDate} onChange={this.handleTextFieldChange} />
         <TextField id="signatureCity" label="City" value={this.state.signatureCity} onChange={this.handleTextFieldChange} />
 
+        <div className="signature-field" ></div>
         <input className="btn btn-danger" type="submit" ></input>
       </form>
     )
