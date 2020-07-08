@@ -5,7 +5,8 @@ import RadioField from './RadioField';
 type State = {
   movingDate: string,
   postcode: string,
-  landlord: string
+  landlord: string,
+  [x: string]: string
 }
 
 class Form extends React.Component<{}, State> {
@@ -15,12 +16,21 @@ class Form extends React.Component<{}, State> {
     landlord: ""
   }
 
+  handleChange = (e) => {
+    this.setState({[e.target.id]: e.target.value})
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(this.state)
+  }
+
   render() {
     return(
-      <form>
-        <TextField id="movingDate" label="Date of moving" />
-        <TextField id="postcode" label="Postcode in Hamburg" />
-        <TextField id="landlord" label="Name and address of the landlord" />
+      <form onSubmit={this.handleSubmit} >
+        <TextField id="movingDate" label="Date of moving" value={this.state.movingDate} onChange={this.handleChange} />
+        <TextField id="postcode" label="Postcode in Hamburg" value={this.state.postcode} onChange={this.handleChange} />
+        <TextField id="landlord" label="Name and address of the landlord" value={this.state.landlord} onChange={this.handleChange} />
         <TextField id="surname" label="Surname / Doctoral degree" />
         <TextField id="birthname" label="Birth name (if applicable)" />
         <TextField id="firstnames" label="First name(s)" />
@@ -47,7 +57,7 @@ class Form extends React.Component<{}, State> {
 
         <TextField id="currentNationalities" label="Current Nationalities" />
 
-        <input className="btn btn-danger" type="submit"></input>
+        <input className="btn btn-danger" type="submit" ></input>
       </form>
     )
   }

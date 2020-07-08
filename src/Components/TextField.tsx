@@ -1,12 +1,37 @@
 import * as React from 'react';
 
-const TextField = (props) => {
-  return(
-    <div>
-      <label htmlFor={ props.id } >{props.label}</label>
-      <input type="text" id={props.id} name={props.id} ></input>
-    </div>
-  )
+type State = {
+  value: string
+}
+
+type Props = {
+  id: string,
+  label: string,
+  value?: string,
+  onChange?: any
+}
+
+class TextField extends React.Component<Props, {}> {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     value: ""
+  //   }
+  // }
+
+  render() {
+    return(
+      <div>
+        <label htmlFor={ this.props.id } >{this.props.label}</label>
+        <input
+          type="text"
+          id={this.props.id}
+          name={this.props.id}
+          value={this.props.value}
+          onChange={this.props.onChange} ></input>
+      </div>
+    )
+  }
 }
 
 export default TextField;
