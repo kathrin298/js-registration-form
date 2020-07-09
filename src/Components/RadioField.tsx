@@ -5,7 +5,7 @@ type Props = {
   name: string,
   label: string,
   options: string[],
-  onChange: any
+  onChange: (e: any) => void
 }
 
 const RadioField = (props: Props) => {

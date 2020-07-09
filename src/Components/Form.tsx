@@ -2,6 +2,13 @@ import * as React from 'react';
 import TextField from './TextField';
 import RadioField from './RadioField';
 
+type Props = {
+  genderOptions: string[],
+  relationshipStatusOptions: string[],
+  religionOptions: string[],
+  documentTypeOptions: string[]
+}
+
 type State = {
   movingDate: string,
   postcode: string,
@@ -28,7 +35,24 @@ type State = {
   [x: string]: string
 }
 
-class Form extends React.Component<{}, State> {
+class Form extends React.Component<Props, State> {
+  static defaultProps: Props = {
+    genderOptions: ['Male', 'Female'],
+    relationshipStatusOptions: ["Single",
+                                "Annulled civil partnership",
+                                "Civil partnership",
+                                "Married",
+                                "Divorced",
+                                "Widowed",
+                                "Widowed civiled partner"],
+    religionOptions: ["Lutheran",
+                      "Jewish Com. Hamb.",
+                      "Roman Catholic",
+                      "Reformed churches",
+                      "Other"],
+    documentTypeOptions: ['ID Card', 'Passport']
+  }
+
   state: State = {
     movingDate: "",
     postcode: "",
@@ -84,13 +108,13 @@ class Form extends React.Component<{}, State> {
           <TextField id="surname" label="Surname / Doctoral degree" value={this.state.surname} onChange={this.handleTextFieldChange} />
           <TextField id="birthname" label="Birth name (if applicable)" value={this.state.birthname} optional={true} onChange={this.handleTextFieldChange} />
           <TextField id="firstnames" label="First name(s)" value={this.state.firstnames} onChange={this.handleTextFieldChange} />
-          <RadioField id="gender" name="gender" options={['Male', 'Female']} label="Gender" onChange={this.handleRadioFieldChange} />
+          <RadioField id="gender" name="gender" options={this.props.genderOptions} label="Gender" onChange={this.handleRadioFieldChange} />
           <TextField id="dob" label="Date of birth" value={this.state.dob} onChange={this.handleTextFieldChange} />
           <TextField id="placeOfBirth" label="Place of birth (city and country)" value={this.state.placeOfBirth} onChange={this.handleTextFieldChange} />
-          <RadioField id="relationshipStatus" name="relationshipStatus" options={["Single", "Annulled civil partnership", "Civil partnership", "Married", "Divorced", "Widowed", "Widowed civiled partner"]} label="Relationship status" onChange={this.handleRadioFieldChange} />
-          <RadioField id="religion" name="religion" options={["Lutheran", "Jewish Com. Hamb.", "Roman Catholic", "Reformed churches", "Other"]} label="Religion" onChange={this.handleRadioFieldChange} />
+          <RadioField id="relationshipStatus" name="relationshipStatus" options={this.props.relationshipStatusOptions} label="Relationship status" onChange={this.handleRadioFieldChange} />
+          <RadioField id="religion" name="religion" options={this.props.religionOptions} label="Religion" onChange={this.handleRadioFieldChange} />
           <TextField id="currentNationalities" label="Current nationalities" value={this.state.currentNationalities} onChange={this.handleTextFieldChange} />
-          <RadioField id="documentType" name="documentType" options={['ID Card', 'Passport']} label="Type of document" onChange={this.handleRadioFieldChange} />
+          <RadioField id="documentType" name="documentType" options={this.props.documentTypeOptions} label="Type of document" onChange={this.handleRadioFieldChange} />
           <TextField id="documentAuthory" label="Issuing authority" value={this.state.documentAuthory} onChange={this.handleTextFieldChange} />
           <TextField id="documentIssueDate" label="Date of issue" value={this.state.documentIssueDate} onChange={this.handleTextFieldChange} />
           <TextField id="documentExpiryDate" label="Expiry date" value={this.state.documentExpiryDate} onChange={this.handleTextFieldChange} />

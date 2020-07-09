@@ -5,7 +5,7 @@ type Props = {
   label: string,
   value: string,
   optional?: true,
-  onChange: any
+  onChange: (e: any) => void
 }
 
 const TextField = (props: Props) => {
