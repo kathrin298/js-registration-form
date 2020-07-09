@@ -1,6 +1,14 @@
 import * as React from 'react';
 
-const RadioField = (props) => {
+type Props = {
+  id: string,
+  name: string,
+  label: string,
+  options: string[],
+  onChange: any
+}
+
+const RadioField = (props: Props) => {
   return(
     <div className="form-group">
       <label htmlFor={ props.id } >{props.label}</label>
